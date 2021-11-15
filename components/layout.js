@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>Form Templates</title>
-        <meta name="description">This is a collection of form templates, which can be used for various projects.</meta>
+        <meta name="description" content="This is a collection of form templates, which can be used for various projects." />
       </Head>
       <Header />
       <main>{children}</main>
