@@ -1,3 +1,33 @@
+@font-face {
+  font-family: 'Founders Grotesk X-Condensed';
+  src: url('../public/fonts/FoundersGroteskXCond-Lt.otf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk X-Condensed';
+  src: url('../public/fonts/FoundersGroteskXCond-Reg.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk X-Condensed';
+  src: url('../public/fonts/FoundersGroteskXCond-Med.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk X-Condensed';
+  src: url('../public/fonts/FOUNDERSGROTESKXCOND-SMBD.OTF');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk X-Condensed';
+  src: url('../public/fonts/FoundersGroteskXCond-Bold.otf');
+  font-weight: 700;
+}
+
 * {
   padding: 0;
   margin: 0;

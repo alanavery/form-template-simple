@@ -2,11 +2,20 @@
   max-width: 288px;
   display: flex;
   flex-direction: column;
+  font-family: 'Founders Grotesk X-Condensed', sans-serif;
 }
 
 .formControl {
   display: grid;
   grid-template-columns: 40% 60%;
+}
+
+.form input {
+  font-family: inherit;
+}
+
+.form select {
+  font-family: inherit;
 }
 
 .formControl label {
@@ -21,4 +30,5 @@
 
 .formControl input[type='submit'] {
   grid-column: 2 / span 1;
+  cursor: pointer;
 }
