@@ -1,30 +1,33 @@
+/* Notes —————————— */
+/* Vertical align doesn't work on text inputs */
+
 @font-face {
   font-family: 'Founders Grotesk X-Condensed';
-  src: url('../public/fonts/FoundersGroteskXCond-Lt.otf');
+  src: url('../public/fonts/FoundersGroteskXCond-Lt.otf') format('opentype');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Founders Grotesk X-Condensed';
-  src: url('../public/fonts/FoundersGroteskXCond-Reg.otf');
+  src: url('../public/fonts/FoundersGroteskXCond-Reg.otf') format('opentype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Founders Grotesk X-Condensed';
-  src: url('../public/fonts/FoundersGroteskXCond-Med.otf');
+  src: url('../public/fonts/FoundersGroteskXCond-Med.otf') format('opentype');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Founders Grotesk X-Condensed';
-  src: url('../public/fonts/FOUNDERSGROTESKXCOND-SMBD.OTF');
+  src: url('../public/fonts/FOUNDERSGROTESKXCOND-SMBD.OTF') format('opentype');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Founders Grotesk X-Condensed';
-  src: url('../public/fonts/FoundersGroteskXCond-Bold.otf');
+  src: url('../public/fonts/FoundersGroteskXCond-Bold.otf') format('opentype');
   font-weight: 700;
 }
 
