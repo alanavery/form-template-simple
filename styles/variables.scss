@@ -1,0 +1,22 @@
+@use 'sass:math';
+
+$root: 16;
+$mobile-root: 10;
+$blue: #002352;
+$white: #fff;
+
+@mixin bebas-neue-pro-regular {
+  font-family: bebas-neue-pro, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin bebas-neue-pro-bold {
+  font-family: bebas-neue-pro, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@function rem($px) {
+  @return math.div($px, $root) + rem;
+}

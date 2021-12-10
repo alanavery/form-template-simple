@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import styles from '../styles/Form.module.css';
+import styles from '../styles/BasicForm.module.scss';
 
 const brand = 'Corona';
 
-const Form = () => {
+const BasicForm = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address1, setAddress1] = useState('');
@@ -43,11 +43,12 @@ const Form = () => {
         <input
           id="first-name"
           type="text"
-          name="first-name"
+          name="firstName"
           value={firstName}
           onChange={(event) => {
             setFirstName(event.target.value);
           }}
+          required
         />
       </div>
 
@@ -57,7 +58,7 @@ const Form = () => {
         <input
           id="last-name"
           type="text"
-          name="last-name"
+          name="lastName"
           value={lastName}
           onChange={(event) => {
             setLastName(event.target.value);
@@ -215,7 +216,7 @@ const Form = () => {
       </div>
 
       {/* Agree to rules —————————— */}
-      <div className={styles.formControl}>
+      <div className={`${styles.formControl} ${styles.checkbox}`}>
         <label className={styles.checkboxLabel} htmlFor="agree-rules">
           <input
             id="agree-rules"
@@ -235,7 +236,7 @@ const Form = () => {
       </div>
 
       {/* Agree to terms and conditions —————————— */}
-      <div className={styles.formControl}>
+      <div className={`${styles.formControl} ${styles.checkbox}`}>
         <label className={styles.checkboxLabel} htmlFor="agree-terms">
           <input
             id="agree-terms"
@@ -268,4 +269,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default BasicForm;
