@@ -1,10 +1,15 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Cleave from 'cleave.js/react';
 import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/FormikForm.module.scss';
 
 const brand = 'Corona';
+
+const dobInput = ({ field, form: { touched, errors }, ...props }) => {
+  return <Cleave {...field} {...props} options={{ date: true }} />;
+};
 
 const FormikForm = () => {
   return (
@@ -23,7 +28,15 @@ const FormikForm = () => {
         agreeTerms: '',
       }}
       validationSchema={Yup.object({
-        firstName: Yup.string().required('Required')
+        firstName: Yup.string().required('Required').max(50, 'Must be 50 characters or less'),
+        lastName: Yup.string().required('Required').max(50, 'Must be 50 characters or less'),
+        address1: Yup.string().required('Required').max(50, 'Must be 50 characters or less'),
+        city: Yup.string().required('Required').max(50, 'Must be 50 characters or less'),
+        state: Yup.string().required('Required'),
+        zip: Yup.string().required('Required'),
+        email: Yup.string().required('Required').email('Invalid email address'),
+        dob: Yup.string().required('Required').matches(/\d\d\/\d\d\/\d\d\d\d/, 'Must follow this format: MM/DD/YYYY'),
+        agreeRules: Yup.boolean().required('Required'),
       })}
       onSubmit={(values) => {
         console.log(values);
@@ -34,36 +47,44 @@ const FormikForm = () => {
         <div className={styles.formControl}>
           <label htmlFor="first-name">First Name</label>
           <Field id="first-name" type="text" name="firstName" />
+          <ErrorMessage className={styles.error} name="firstName" component="div" />
         </div>
 
         {/* Last name —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="last-name">Last Name</label>
           <Field id="last-name" type="text" name="lastName" />
+          <ErrorMessage className={styles.error} name="lastName" component="div" />
         </div>
 
         {/* Address 1 —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="address1">Address 1</label>
           <Field id="address1" type="text" name="address1" />
+          <ErrorMessage className={styles.error} name="address1" component="div" />
         </div>
 
         {/* Address 2 —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="address2">Address 2</label>
           <Field id="address2" type="text" name="address2" />
+          <ErrorMessage className={styles.error} name="address2" component="div" />
         </div>
 
         {/* City —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="city">City</label>
           <Field id="city" type="text" name="city" />
+          <ErrorMessage className={styles.error} name="city" component="div" />
         </div>
 
         {/* State —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="state">State</label>
           <Field as="select" id="state" name="state">
+            <option value="" disabled>
+              Select one
+            </option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -116,24 +137,28 @@ const FormikForm = () => {
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </Field>
+          <ErrorMessage className={styles.error} name="state" component="div" />
         </div>
 
         {/* Zip code —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="zip">Zip Code</label>
           <Field id="zip" type="text" name="zip" />
+          <ErrorMessage className={styles.error} name="zip" component="div" />
         </div>
 
         {/* Email —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="email">Email</label>
           <Field id="email" type="email" name="email" />
+          <ErrorMessage className={styles.error} name="email" component="div" />
         </div>
 
         {/* Date of birth —————————— */}
         <div className={styles.formControl}>
           <label htmlFor="dob">Date of Birth</label>
-          <Field id="dob" type="date" name="dob" />
+          <Field id="dob" name="dob" placeholder="MM/DD/YYYY" component={dobInput} />
+          <ErrorMessage className={styles.error} name="dob" component="div" />
         </div>
 
         {/* Agree to rules —————————— */}
@@ -142,6 +167,7 @@ const FormikForm = () => {
             <Field id="agree-rules" type="checkbox" name="agreeRules" />
             <span>I have read and agree to the Official Rules.</span>
           </label>
+          <ErrorMessage className={styles.error} name="agreeRules" component="div" />
         </div>
 
         {/* Agree to terms and conditions —————————— */}
@@ -152,6 +178,7 @@ const FormikForm = () => {
               I have read and agree to {brand}&apos;s Privacy Policy and Terms and Conditions, and consent to {brand}&apos;s use of my personal information for marketing and analytics purposes, including receiving marketing and promotional communications.
             </span>
           </label>
+          <ErrorMessage className={styles.error} name="agreeTerms" component="div" />
         </div>
 
         {/* reCAPTCHA —————————— */}

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import './variables.scss';
 
 .form {
@@ -13,34 +14,33 @@
 
   .formControl {
     margin-bottom: rem(10);
-    display: grid;
-    grid-template-columns: 40% 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     label {
       padding-right: 10px;
-      text-align: right;
+      font-weight: 600;
     }
 
-    input {
-      border: none;
-      font-family: inherit;
-      font-size: inherit;
-
-      &:invalid {
-        border: 2px solid red;
-      }
-    }
-
+    input,
     select {
+      width: 100%;
+      border: none;
+      color: $blue;
       font-family: inherit;
       font-size: inherit;
+
+      &::placeholder {
+        color: $gray;
+        opacity: 1;
+      }
     }
 
     .checkboxLabel {
       padding: 0;
       display: flex;
       align-items: flex-start;
-      grid-column: 2 / span 1;
       font-size: 16px;
       text-align: left;
 
@@ -56,8 +56,41 @@
       }
     }
 
+    .error {
+      position: relative;
+      padding: 0 0.4em;
+      margin-top: math.div(4, 16) + em;
+      align-self: center;
+      color: $blue;
+      font-size: 16px;
+      background-color: $white;
+
+      &::before,
+      &::after {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        content: '';
+        transform: translateX(-50%);
+      }
+
+      &::before {
+        border-right: 8px solid transparent;
+        border-bottom: 12px solid $blue;
+        border-left: 8px solid transparent;
+      }
+
+      &::after {
+        z-index: 10;
+        border-right: 6px solid transparent;
+        border-bottom: 10px solid $white;
+        border-left: 6px solid transparent;
+      }
+    }
+
     button {
-      grid-column: 2 / span 1;
       font-family: inherit;
       font-size: inherit;
       cursor: pointer;
